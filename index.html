@@ -25,8 +25,6 @@
       // included, separated by spaces.
       var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
-      var USERS_EMAIL = "Undefined";
-
       var authorizeButton = document.getElementById('authorize_button');
       var signoutButton = document.getElementById('signout_button');
       
@@ -105,25 +103,15 @@
        * Print the names and majors of students in a sample spreadsheet:
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
-        function getEmail() {
-            gapi.client.load('plus', 'v1', function () {
-                var request = gapi.client.plus.people.get({
-                    'userId': 'me'
-                });
-                request.execute(function (resp) {
-                    USERS_EMAIL = resp.emails[0].value);
-                });
-            });
 
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1Mduth0RGyZtq64RzZg6aM3kHPchL18N6zc6x5RSbYeQ',
           range: 'Class Data!A2:M',
         }).then(function (response) {
-            getEmail();
           var range = response.result;
             if (range.values.length > 0) {
-                appendPre('Student ID, Name, Class Level, Extracurricular, P1, P2, P3, P4, P5, P6, P7, P8, P9' + USERS_EMAIL);
+                appendPre('Student ID, Name, Class Level, Extracurricular, P1, P2, P3, P4, P5, P6, P7, P8, P9');
               for (i = 0; i < 2; i++) { // range.values.length, i < num of students
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
