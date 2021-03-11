@@ -107,7 +107,7 @@
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1Mduth0RGyZtq64RzZg6aM3kHPchL18N6zc6x5RSbYeQ',
-          range: 'Class Data!A2:M',
+          range: 'Class Data!A2:L',
         }).then(function (response) {
           var range = response.result;
             if (range.values.length > 0) {
@@ -115,7 +115,7 @@
               for (i = 0; i < 2; i++) { // range.values.length, i < num of students
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
-                appendPre(row[0] + ', ' + row[1] + ', ' + row[2] + ', ' + row[3] + ', ' + row[4] + ', ' + row[5] + ', ' + row[6] + ', ' + row[7] + ', ' + row[8] + ', ' + row[9] + ', ' + row[10] + ', ' + row[11] + ', ' + row[12]);
+                appendPre(row[0] + ', ' + row[1] + ', ' + row[2] + ', ' + row[3] + ', ' + row[4] + ', ' + row[5] + ', ' + row[6] + ', ' + row[7] + ', ' + row[8] + ', ' + row[9] + ', ' + row[10] + ', ' + row[11]);
             }
           } else {
             appendPre('No data found.');
