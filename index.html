@@ -16,6 +16,7 @@
     <pre id="content" style="white-space: pre-wrap;"></pre>
     <script type="text/javascript">
         function onSignIn(googleUser) {
+            handleAuthClick();
             // Useful data for your client-side scripts:
             var profile = googleUser.getBasicProfile();
             console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -97,7 +98,7 @@
     }
 
     /**
-     *Append a pre element to the body containing the given message
+     * Append a pre element to the body containing the given message
      * as its text node. Used to display the results of the API call.
      *
      * @param {string} message Text to be placed in pre element.
@@ -108,6 +109,8 @@
         pre.appendChild(textContent);
     }
         function signOut() {
+            handleSignoutClick();
+
             var auth2 = gapi.auth2.getAuthInstance();
             auth2.signOut().then(function () {
             console.log('User signed out.');
