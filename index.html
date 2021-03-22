@@ -5,9 +5,7 @@
     <meta charset="utf-8" />
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="756686475707-9oq5b2s576caedn7onn2c01qb4odheh4.apps.googleusercontent.com">
-    <script async defer src="https://apis.google.com/js/platform.js">
-        onload="this.onload=function(){};handleClientLoad()"
-        onreadystatechange = "if (this.readyState === 'complete') this.onload()">
+    <script src="https://apis.google.com/js/platform.js" async defer>
     </script>
 </head>
 <body>
@@ -143,6 +141,7 @@
     }
     </script>
     <script async defer src="https://apis.google.com/js/api.js"
+            onload="this.onload=function(){};handleClientLoad()"
             onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
 </body>
