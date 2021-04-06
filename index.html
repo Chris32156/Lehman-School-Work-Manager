@@ -127,10 +127,24 @@
             if (range.values.length > 0) {
                 appendPre('Welcome ' + email + '.');
                 appendPre('Student ID, Name, Class Level, Extracurricular, P1, P2, P3, P4, P5, P6, P7, P8');
-                for (i = 0; i < 2; i++) { // range.values.length, i < num of students
+                /* for (i = 0; i < 2; i++) { // range.values.length, i < num of students
                     var row = range.values[i];
                     // Print columns A and E, which correspond to indices 0 and 4.
                     appendPre(row[0] + ', ' + row[1] + ', ' + row[2] + ', ' + row[3] + ', ' + row[4] + ', ' + row[5] + ', ' + row[6] + ', ' + row[7] + ', ' + row[8] + ', ' + row[9] + ', ' + row[10] + ', ' + row[11]);
+                } */
+                if (email == "csch0981@lehmanhs.com") {
+                    var row = range.values[1];
+                    appendPre(row[0] + ', ' + row[1] + ', ' + row[2] + ', ' + row[3] + ', ' + row[4] + ', ' + row[5] + ', ' + row[6] + ', ' + row[7] + ', ' + row[8] + ', ' + row[9] + ', ' + row[10] + ', ' + row[11]);
+                }
+                else if (email == "rrat7361@lehmanhs.com") {
+                    var row = range.values[0];
+                    appendPre(row[0] + ', ' + row[1] + ', ' + row[2] + ', ' + row[3] + ', ' + row[4] + ', ' + row[5] + ', ' + row[6] + ', ' + row[7] + ', ' + row[8] + ', ' + row[9] + ', ' + row[10] + ', ' + row[11]);
+                }
+                else if (email == "toni.pizza@nyu.edu") {
+                    appendPre("If you were a student your schedule would show here");
+                }
+                else {
+                    appendPre("Schedule not found for user");
                 }
             } else {
                 appendPre('No data found.');
