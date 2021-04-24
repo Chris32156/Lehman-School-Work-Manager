@@ -11,7 +11,6 @@
 
 #Assignments {
     background-color: #e7eef8d9;
-    margin-bottom: 20px;
     border: solid;
     position: fixed;
     border-color: #dce6f2;
@@ -21,6 +20,27 @@
     bottom: 1%;
 }
 
+#Schedule {
+    background-color: #e7eef8d9;
+    border: solid;
+    position: fixed;
+    border-color: #dce6f2;
+    right: 3.125%;
+    left: 55.2%;
+    top: 15%;
+    bottom: 46%;
+}
+
+#Teachers {
+    background-color: #e7eef8d9;
+    border: solid;
+    position: fixed;
+    border-color: #dce6f2;
+    right: 3.125%;
+    left: 55.2%;
+    top: 60%;
+    bottom: 1%;
+}
 #SignOut {
     position: fixed;
     right: 95%;
