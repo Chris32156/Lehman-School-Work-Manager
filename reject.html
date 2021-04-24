@@ -21,7 +21,8 @@
             if (email.includes("@lehmanhs.com")) {
                 window.location.href = "manager.html";
             }
-            else {
+            else
+            {
                 // Signs User out
                 var auth2 = gapi.auth2.getAuthInstance();
                 auth2.signOut().then(function () {
