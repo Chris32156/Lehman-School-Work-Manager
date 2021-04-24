@@ -13,16 +13,17 @@
     border-color: #dce6f2;
     left: 60px;
     right: 1060px;
-    top: 350px;
+    top: 150px;
+    bottom: 10px;
 }
 
 h2 {
-    text-align:center;
-    font-size:26px;
+    text-align: center;
+    font-size: 26px;
 }
 
 h3 {
-    text-align:center;
+    text-align: center;
 }
 
 body {
