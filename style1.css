@@ -1,13 +1,19 @@
-﻿#Top {
-    background-color: #e7eef8;
-    margin-bottom: 20px;
-    border: solid;
-    border-color: #dce6f2;
+﻿#SignIn {
+    position: fixed;
+    left: 30%;
+    right: 30%;
+    top: 30%;
+}
+
+#SignInButton {
+    position: fixed;
+    right: 46.95%;
+    top: 45%;
 }
 
 h2 {
-    text-align:center;
-    font-size:26px;
+    text-align: center;
+    font-size: 2vw;
 }
 
 body {
