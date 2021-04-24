@@ -11,10 +11,10 @@
     border: solid;
     position: fixed;
     border-color: #dce6f2;
-    left: 60px;
-    right: 1060px;
-    top: 150px;
-    bottom: 10px;
+    left: 3.125%;
+    right: 55.2%;
+    top: 15%;
+    bottom: 1%;
 }
 
 h2 {
