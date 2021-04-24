@@ -1,6 +1,10 @@
 ﻿#Top {
     background-color: #e7eef8d9;
-    margin-bottom: 20px;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 90%;
     border: solid;
     border-color: #dce6f2;
 }
@@ -15,6 +19,12 @@
     right: 55.2%;
     top: 15%;
     bottom: 1%;
+}
+
+#SignOut {
+    position: fixed;
+    right: 95%;
+    top: 7.5%;
 }
 
 h2 {
