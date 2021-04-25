@@ -31,6 +31,32 @@
         // included, separated by spaces.
         var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
+        var PeriodTimes = ["9:01 - 9:46", "9:48 - 10:33", "10:35 - 11:20", "11:22 - 12:07", "12:09 - 12:54", "12:56 - 1:41", "1:43 - 2:28"];
+        
+        function LoadWebsite() {
+            LoadSchedule();
+        }
+
+        function LoadSchedule() {
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '1Mduth0RGyZtq64RzZg6aM3kHPchL18N6zc6x5RSbYeQ',
+                range: 'Class Data!A2:P',
+            }).then(function (response) {
+                var range = response.result;
+                // Get row of student's classes
+                var row = range.values[1];
+
+                appendPre("Today is an A day.", "Schedule");
+                for (var i = 2; i < 9; i++)
+                {
+                    appendPre(PeriodTimes[i - 2] + ": " + row[i], "Schedule");
+                }
+
+                }, function (error) {
+                    appendPre(JSON.stringify(error, null, 2));
+                })
+        }
+
         /**
          *  On load, called to load the auth2 library and API client library.
          */
@@ -68,9 +94,9 @@
             }).then(function () {
                 // Listen for sign-in state changes.
                 gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
                 // Handle the initial sign-in state.
                 updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                LoadWebsite();
             }, function (error) {
                 appendPre(JSON.stringify(error, null, 2));
             });
@@ -103,11 +129,16 @@
          *
          * @param {string} message Text to be placed in pre element.
          */
-        function appendPre(message) {
-            var pre = document.getElementById('content');
-            var textContent = document.createTextNode(message + '\n');
+
+        function appendPre(message, id) {
+            var pre = document.getElementById(id);
+            pre.style.textAlign = "center";
+            var textContent = document.createTextNode(message);
             pre.appendChild(textContent);
+            var linebreak = document.createElement("br");
+            document.getElementById(id).appendChild(linebreak);
         }
+
         function signOut() {
             handleSignoutClick();
 
@@ -159,7 +190,8 @@
                 }
             }, function (response) {
                 appendPre('Error: ' + response.result.error.message);
-            });
+                });
+
         }
     </script>
     <script async defer src="https://apis.google.com/js/api.js"
