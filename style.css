@@ -41,10 +41,17 @@
     top: 60%;
     bottom: 1%;
 }
+
 #SignOut {
     position: fixed;
     right: 95%;
-    top: 7.5%;
+    top: 7%;
+}
+
+#Attendance {
+    position: fixed;
+    right: 88%;
+    top: 7%;
 }
 
 h2 {
