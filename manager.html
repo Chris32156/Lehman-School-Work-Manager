@@ -33,8 +33,57 @@
         var PeriodTimes = ["9:01 - 9:46", "9:48 - 10:33", "10:35 - 11:20", "11:22 - 12:07", "12:09 - 12:54", "12:56 - 1:41", "1:43 - 2:28"];
         
         function LoadWebsite() {
+            LoadAssignments();
             LoadSchedule();
             LoadTeachers();
+        }
+
+        function LoadAssignments() {
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '1QPL2j4jQ6zxYcPpMHOVegIX0z_IahOuC_QdOBEKQtJA',
+                range: 'Sheet1!D2:F',
+            }).then(function (response) {
+                var range = response.result;
+
+                // Decleare Vars
+                var reachedEnd = false;
+                var i = 0;
+
+                // List Assignments
+                while (!reachedEnd) {
+                    var row = range.values[i];
+
+                    // Checks if there is assignment
+                    if (row[0] == null) {
+                        reachedEnd = true;
+                    }
+                    else {
+                        var assignmentString = row[1] + " Due " + row[0];
+
+                        // Checks if there is a link attached
+                        if (row[2] == null) {
+                            appendPre(assignmentString, "Assignments");
+                        }
+                        else {
+                            var pre = document.getElementById("Assignments");
+                            pre.style.textAlign = "center";
+                            var a = document.createElement('a');
+                            var link = document.createTextNode(assignmentString);
+                            a.appendChild(link);
+                            a.title = row[1];
+                            a.href = row[2];
+                            pre.appendChild(a);
+
+                            // Create Line Break
+                            var linebreak = document.createElement("br");
+                            pre.appendChild(linebreak);
+                        }
+                        i++;
+                    }
+                }
+                }, function (error) {
+                    appendPre(JSON.stringify(error, null, 2));
+                })
         }
 
         function LoadTeachers() {
