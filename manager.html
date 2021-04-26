@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Lehman Hack Team</title>
+    <title>Lehman Schoolwork Manager</title>
     <link rel="shortcut icon" href="LHS_Logo.png">
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8" />
@@ -35,6 +35,28 @@
         
         function LoadWebsite() {
             LoadSchedule();
+            LoadTeachers();
+        }
+
+        function LoadTeachers() {
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '1Mduth0RGyZtq64RzZg6aM3kHPchL18N6zc6x5RSbYeQ',
+                range: 'Class Data!Q2:Y',
+            }).then(function (response) {
+                var range = response.result;
+                // Get row of student's classes
+                var row = range.values[1];
+
+                for (var i = 0; i < 9; i++)
+                {
+                    if (row[i] != null) {
+                        appendPre(row[i], "Teachers");
+                    }
+                }
+
+                }, function (error) {
+                    appendPre(JSON.stringify(error, null, 2));
+                })
         }
 
         function LoadSchedule() {
