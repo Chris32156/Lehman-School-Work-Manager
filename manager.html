@@ -15,7 +15,6 @@
     <div id="Top">
         <h2 style="font-family: Arial" ,>Lehman Schoolwork Manager</h2>
     </div>
-
     <a id="SignOut" href="#" onclick="signOut();">Sign Out</a>
     <pre id="content" style="white-space: pre-wrap;"></pre>
     <script type="text/javascript">
@@ -50,7 +49,33 @@
                 for (var i = 0; i < 9; i++)
                 {
                     if (row[i] != null) {
-                        appendPre(row[i], "Teachers");
+                        // Create Link
+                        var pre = document.getElementById("Teachers");
+                        pre.style.textAlign = "center";
+                        var a = document.createElement('a'); 
+                        var link = document.createTextNode(row[i]);
+                        a.appendChild(link);
+                        a.title = row[i];
+
+                        // Find teachers Last Name
+                        var x;
+                        for (j = 0; j < row[i].length; j++) {
+                            if (row[i][j] == '.')
+                            {
+                                x = j;
+                            }
+                        }
+                        var lastName = row[i].substring(x + 2, row[i].length);
+
+                        // Set link values
+                        var link = "https://mail.google.com/mail/?view=cm&fs=1&to=" + lastName + "%40lehmanhs.com&authuser=1";
+                        a.href = link;
+
+                        pre.appendChild(a);
+
+                        // Create Line Break
+                        var linebreak = document.createElement("br");
+                        pre.appendChild(linebreak);
                     }
                 }
 
