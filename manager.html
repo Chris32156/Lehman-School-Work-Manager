@@ -51,13 +51,12 @@
 
                 // List Assignments
                 while (!reachedEnd) {
-                    var row = range.values[i];
-
                     // Checks if there is assignment
-                    if (row[0] == null) {
+                    if (range.values[i] == null) {
                         reachedEnd = true;
                     }
                     else {
+                        var row = range.values[i];
                         var assignmentString = row[1] + " Due " + row[0];
 
                         // Checks if there is a link attached
