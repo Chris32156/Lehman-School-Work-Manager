@@ -15,12 +15,14 @@ h2 {
     text-align: center;
     font-size: 2.25vw;
     font-weight: bolder;
+    font-family: 'Roboto', sans-serif;
 }
 
 h3 {
     text-align: center;
     font-size: 2.25vw;
     color: #ff0000;
+    font-family: 'Roboto', sans-serif;
 }
 body {
     background-image: url('LehmanHs.jpg');
