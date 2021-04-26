@@ -31,10 +31,10 @@
         var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
         var PeriodTimes = ["9:01 - 9:46", "9:48 - 10:33", "10:35 - 11:20", "11:22 - 12:07", "12:09 - 12:54", "12:56 - 1:41", "1:43 - 2:28"];
-        
+        var Assignments = ["", "", "", "", "", "", ""];
+
         function LoadWebsite() {
             LoadAssignments();
-            LoadSchedule();
             LoadTeachers();
         }
 
@@ -59,6 +59,11 @@
                         var row = range.values[i];
                         var assignmentString = row[1] + " Due " + row[0];
 
+                        // Add to assignments array
+                        if (i < 8) {
+                            Assignments[i] = assignmentString;
+                        }
+
                         // Checks if there is a link attached
                         if (row[2] == null) {
                             appendPre(assignmentString, "Assignments");
@@ -80,6 +85,9 @@
                         i++;
                     }
                 }
+
+                LoadSchedule();
+
                 }, function (error) {
                     appendPre(JSON.stringify(error, null, 2));
                 })
@@ -140,11 +148,17 @@
                 var range = response.result;
                 // Get row of student's classes
                 var row = range.values[1];
-
+                var x = 0;
                 appendPre("Today is an A day.", "Schedule");
                 for (var i = 2; i < 9; i++)
                 {
-                    appendPre(PeriodTimes[i - 2] + ": " + row[i], "Schedule");
+                    if (row[i] != "") {
+                        appendPre(PeriodTimes[i - 2] + ": " + row[i] + " Class", "Schedule");
+                    }
+                    else {
+                        appendPre(PeriodTimes[i - 2] + ": " + Assignments[x], "Schedule");
+                        x++;
+                    }
                 }
 
                 }, function (error) {
