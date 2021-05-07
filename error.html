@@ -14,21 +14,18 @@
 <body>
     <div id="SignIn">
         <h2 style="font-family: Arial">Lehman Schoolwork Manager</h2>
-        <div id="SignInButton"class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+        <div id="SignInButton" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
     </div>
     <script>
         function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
             var email = profile.getEmail();
-
             // Checks if email is within lehman orginization
             if (email.includes("@lehmanhs.com")) {
-                if (email.includes("csch0981") || email.includes("rrat7361")) 
-                {
+                if (email.includes("csch0981") || email.includes("rrat7361")) {
                     window.location.href = "manager.html";
                 }
-                else
-                {
+                else {
                     // Signs User out
                     var auth2 = gapi.auth2.getAuthInstance();
                     auth2.signOut().then(function () {
@@ -49,6 +46,6 @@
             }
         }
     </script>
+    <h3 style="font-family: Arial" ,>User's Schedule Not Found</h3>
 </body>
 </html>
-

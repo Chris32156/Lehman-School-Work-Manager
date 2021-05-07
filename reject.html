@@ -20,10 +20,20 @@
         function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
             var email = profile.getEmail();
-
             // Checks if email is within lehman orginization
             if (email.includes("@lehmanhs.com")) {
-                window.location.href = "manager.html";
+                if (email.includes("csch0981") || email.includes("rrat7361")) {
+                    window.location.href = "manager.html";
+                }
+                else {
+                    // Signs User out
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function () {
+                        console.log('User signed out.');
+                    });
+
+                    window.location.href = "error.html";
+                }
             }
             else {
                 // Signs User out
