@@ -41,18 +41,8 @@
         }
 
         function LoadAssignments() {
-            var spreadsheetId;
-            // Get row of student's classes
-            if (email == "csch0981@lehmanhs.com") {
-                spreadsheetId = '1QPL2j4jQ6zxYcPpMHOVegIX0z_IahOuC_QdOBEKQtJA';
-            }
-
-            else if (email == "rrat7391@lehmanhs.com") {
-                spreadsheetId = '1M6JuZZ8rQCiMStk4V4Ms9We27e_ieqdqelLf4tJGXrk';
-            }
-
             gapi.client.sheets.spreadsheets.values.get({
-                spreadsheetId: spreadsheetId,
+                spreadsheetId: '1QPL2j4jQ6zxYcPpMHOVegIX0z_IahOuC_QdOBEKQtJA',
                 range: 'Sheet1!D2:F',
             }).then(function (response) {
                 var range = response.result;
@@ -112,13 +102,7 @@
             }).then(function (response) {
                 var range = response.result;
                 // Get row of student's classes
-                if (email == "csch0981@lehmanhs.com") {
-                    var row = range.values[1];
-                }
-
-                else if (email == "rrat7391@lehmanhs.com") {
-                    var row = range.values[2];
-                }
+                var row = range.values[1];
 
                 for (var i = 0; i < 9; i++)
                 {
@@ -164,16 +148,8 @@
                 range: 'Class Data!A2:P',
             }).then(function (response) {
                 var range = response.result;
-
                 // Get row of student's classes
-                if (email == "csch0981@lehmanhs.com") {
-                    var row = range.values[1];
-                }
-
-                else if (email == "rrat7391@lehmanhs.com") {
-                    var row = range.values[2];
-                }
-
+                var row = range.values[1];
                 var x = 0;
                 appendPre("Today is an A day.", "Schedule");
                 for (var i = 2; i < 9; i++)
